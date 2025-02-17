@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offres de Vacances</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Offres de Vacances</h1>
+
+        <!-- ✅ FORMULAIRE DE FILTRAGE -->
+        <form method="get" action="/vacances">
+            <label for="prix">Prix maximum :</label>
+            <input type="number" id="prix" name="prix" min="0" placeholder="Prix max" 
+                value="{{ request.query_params.get('prix', '') }}">
+
+            <label for="disponible">
+                <input type="checkbox" id="disponible" name="disponible" 
+                    {% if request.query_params.get('disponible') %}checked{% endif %}>
+                Uniquement les offres disponibles
+            </label>
+
+            <button type="submit">Filtrer</button>
+        </form>
+
+        <!-- ✅ BOUTON POUR RÉINITIALISER LES FILTRES -->
+        <form method="get" action="/vacances" style="margin-top: 10px;">
+            <button type="submit">Réinitialiser</button>
+        </form>
+
+        <!-- ✅ TABLEAU DES OFFRES -->
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Localisation</th>
+                <th>Prix (€)</th>
+                <th>Disponibilité</th>
+            </tr>
+            {% for offre in offres %}
+            <tr>
+                <td>{{ offre.nom }}</td>
+                <td>{{ offre.description }}</td>
+                <td>{{ offre.localisation.ville }}, {{ offre.localisation.pays }}</td>
+                <td>{{ offre.prix }}</td>
+                <td>{% if offre.disponibilite == "true" %} ✅ Disponible {% else %} ❌ Indisponible {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
