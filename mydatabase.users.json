@@ -1,0 +1,27 @@
+[{
+  "_id": "user001",
+  "name": "Alice Martin",
+  "email": "alice.martin@email.com",
+  "role": "client",
+  "reservations": [
+    {
+      "offer_id": "offer001",
+      "date": "2025-03-15",
+      "status": "confirmed"
+    }
+  ]
+},
+{
+  "_id": "user002",
+  "name": "Bob Dupont",
+  "email": "bob.dupont@email.com",
+  "role": "client",
+  "reservations": []
+},
+{
+  "_id": "user003",
+  "name": "Charlie Durand",
+  "email": "charlie.durand@email.com",
+  "role": "admin",
+  "reservations": []
+}]

@@ -1,0 +1,36 @@
+[{
+  "_id": "offer001",
+  "type": "hébergement",
+  "nom": "Hôtel Riviera",
+  "description": "Hôtel 4 étoiles avec vue sur la mer.",
+  "localisation": {
+    "ville": "Nice",
+    "pays": "France"
+  },
+  "prix": 120,
+  "disponibilite": "true"
+},
+{
+  "_id": "offer002",
+  "type": "activité",
+  "nom": "Plongée sous-marine",
+  "description": "Explorez les fonds marins en Méditerranée.",
+  "localisation": {
+    "ville": "Marseille",
+    "pays": "France"
+  },
+  "prix": 50,
+  "disponibilite": "true"
+},
+{
+  "_id": "offer003",
+  "type": "transport",
+  "nom": "Croisière en voilier",
+  "description": "Naviguez le long de la Côte d'Azur en voilier.",
+  "localisation": {
+    "ville": "Cannes",
+    "pays": "France"
+  },
+  "prix": 200,
+  "disponibilite": "false"
+}]
