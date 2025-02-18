@@ -45,15 +45,21 @@
                 <th>Prix (€)</th>
                 <th>Disponibilité</th>
             </tr>
-            {% for offre in offres %}
-            <tr>
-                <td>{{ offre.nom }}</td>
-                <td>{{ offre.description }}</td>
-                <td>{{ offre.localisation.ville }}, {{ offre.localisation.pays }}</td>
-                <td>{{ offre.prix }}</td>
-                <td>{% if offre.disponibilite == "true" %} ✅ Disponible {% else %} ❌ Indisponible {% endif %}</td>
-            </tr>
-            {% endfor %}
+            {% if not empty %}
+                {% for offre in offres %}
+                <tr>
+                    <td>{{ offre.nom }}</td>
+                    <td>{{ offre.description }}</td>
+                    <td>{{ offre.localisation.ville }}, {{ offre.localisation.pays }}</td>
+                    <td>{{ offre.prix }}</td>
+                    <td>{% if offre.disponibilite == "true" %} ✅ Disponible {% else %} ❌ Indisponible {% endif %}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                        <td colspan="5" style="color:red">No reservation found</td>
+                </tr>
+            {% endif %}
         </table>
     </div>
 </body>

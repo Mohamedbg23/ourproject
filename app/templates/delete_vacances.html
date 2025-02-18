@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer une vacance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #b52b38;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function confirmDelete(event) {
+            const confirmation = confirm("⚠️ Êtes-vous sûr de vouloir supprimer cette vacance ?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Supprimer une offre de vacances</h2>
+        
+        <form action="/vacances/delete" method="post" onsubmit="confirmDelete(event)">
+            <label for="vacance_id">Nom && ID de la vacance:</label>
+            <select id="vacance_id" name="vacance_id" required>
+                {% for offre in offres %}
+                    <option value="{{ offre.id }}">{{ offre.nom }} (ID: {{ offre.id }})</option>
+                {% endfor %}
+            </select>
+    
+
+            <button type="submit">Supprimer</button>
+        </form>
+
+        <a class="back-link" href="/vacances">⬅ Retour à la liste</a>
+    </div>
+</body>
+</html>
